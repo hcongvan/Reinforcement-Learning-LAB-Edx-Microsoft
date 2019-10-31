@@ -2,15 +2,18 @@ import numpy as np
 
 ### Interface
 class Environment(object):
+    def init(self):
+        self.env = SimpleRoomsEnv()
+        self.act = ActionSpace({0:'north',1:'east',2:'west',3:'south'})
 
     def reset(self):
-        raise NotImplementedError('Inheriting classes must override reset.')
+        return self.env.reset()
 
     def actions(self):
-        raise NotImplementedError('Inheriting classes must override actions.')
+        return self.act.n
 
     def step(self):
-        raise NotImplementedError('Inheriting classes must override step')
+        return self.env.step()
 
 class ActionSpace(object):
     
